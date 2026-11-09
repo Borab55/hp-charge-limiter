@@ -1,21 +1,21 @@
 <div align="center">
 
-<a href="README.md"><img src="docs/badges/lang-tr-active.svg" alt="Türkçe (Aktif)" height="34" /></a>&nbsp;&nbsp;<a href="README.en.md"><img src="docs/badges/lang-en-inactive.svg" alt="Read in English" height="34" /></a>
+<a href="README.md"><img src="docs/badges/lang-tr-active.svg?v=2" alt="Türkçe (Aktif)" height="34" /></a>&nbsp;&nbsp;<a href="README.en.md"><img src="docs/badges/lang-en-inactive.svg?v=2" alt="Read in English" height="34" /></a>
 
 <br /><br />
 
-<img src="docs/logo.png" alt="HP Battery Charge Limiter Logo" width="118" height="118" />
+<img src="docs/logo.png?v=2" alt="HP Battery Charge Limiter Logo" width="118" height="118" />
 
 # ⚡ HP Battery Charge Limiter
 
 **HP Victus, OMEN ve Pavilion** dizüstü bilgisayarlar için BIOS'ta bulunmayan batarya şarj sınırlandırma özelliğini donanımsal olarak etkinleştiren, **kurulum gerektirmeyen (`1.57 MB` tek `.exe`)**, **DirectX GPU hızlandırmalı** modern masaüstü kontrol merkezi.
 
 <p align="center">
-  <a href="../../releases/latest"><img src="docs/badges/release-tr.svg" alt="İndir v2.4.0" height="30" /></a>&nbsp;
-  <a href="https://github.com/kralonur/hp-charge-limit-rs"><img src="docs/badges/engine-tr.svg" alt="Çekirdek Motor" height="30" /></a>&nbsp;
-  <a href="#-öne-çıkan-özellikler"><img src="docs/badges/ui-tr.svg" alt="DirectX WPF Arayüz" height="30" /></a>&nbsp;
-  <a href="#-yapay-zeka-katkısı--geliştirme-süreci"><img src="docs/badges/ai.svg" alt="Google Gemini Argon" height="30" /></a>&nbsp;
-  <a href="#-lisans-ve-yasal-bildirimler"><img src="docs/badges/license-tr.svg" alt="Lisans" height="30" /></a>
+  <a href="../../releases/latest"><img src="docs/badges/release-tr.svg?v=2" alt="İndir v2.4.0" height="30" /></a>&nbsp;
+  <a href="https://github.com/kralonur/hp-charge-limit-rs"><img src="docs/badges/engine-tr.svg?v=2" alt="Çekirdek Motor" height="30" /></a>&nbsp;
+  <a href="#-öne-çıkan-özellikler"><img src="docs/badges/ui-tr.svg?v=2" alt="DirectX WPF Arayüz" height="30" /></a>&nbsp;
+  <a href="#-yapay-zeka-katkısı--geliştirme-süreci"><img src="docs/badges/ai.svg?v=2" alt="Google Gemini Argon" height="30" /></a>&nbsp;
+  <a href="#-lisans-ve-yasal-bildirimler"><img src="docs/badges/license-tr.svg?v=2" alt="Lisans" height="30" /></a>
 </p>
 
 [**📥 İndir (Releases)**](../../releases/latest) &nbsp;·&nbsp; [**💡 Kurulum & Kullanım**](#-kurulum-gerekir-mi-nasıl-kullanılır) &nbsp;·&nbsp; [**❓ Sıkça Sorulan Sorular**](#-sıkça-sorulan-sorular-sss) &nbsp;·&nbsp; [**📦 Sürüm Geçmişi**](docs/CHANGELOG.md) &nbsp;·&nbsp; [**🔗 Ana Kaynak**](#-ana-kaynak-upstream-source-ve-atıf)

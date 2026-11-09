@@ -1,21 +1,21 @@
 <div align="center">
 
-<a href="README.md"><img src="docs/badges/lang-tr-inactive.svg" alt="Türkçe Oku" height="34" /></a>&nbsp;&nbsp;<a href="README.en.md"><img src="docs/badges/lang-en-active.svg" alt="English (Active)" height="34" /></a>
+<a href="README.md"><img src="docs/badges/lang-tr-inactive.svg?v=2" alt="Türkçe Oku" height="34" /></a>&nbsp;&nbsp;<a href="README.en.md"><img src="docs/badges/lang-en-active.svg?v=2" alt="English (Active)" height="34" /></a>
 
 <br /><br />
 
-<img src="docs/logo.png" alt="HP Battery Charge Limiter Logo" width="118" height="118" />
+<img src="docs/logo.png?v=2" alt="HP Battery Charge Limiter Logo" width="118" height="118" />
 
 # ⚡ HP Battery Charge Limiter
 
 A modern, **zero-install (`1.57 MB` standalone `.exe`)**, **DirectX GPU-accelerated** desktop control center that enables hardware-level battery charge limiting for **HP Victus, OMEN, and Pavilion** laptops on Windows 10 & 11.
 
 <p align="center">
-  <a href="../../releases/latest"><img src="docs/badges/release-en.svg" alt="Download v2.4.0" height="30" /></a>&nbsp;
-  <a href="https://github.com/kralonur/hp-charge-limit-rs"><img src="docs/badges/engine-en.svg" alt="Core Engine" height="30" /></a>&nbsp;
-  <a href="#-key-features"><img src="docs/badges/ui-en.svg" alt="DirectX WPF UI" height="30" /></a>&nbsp;
-  <a href="#-ai-assisted-development--credits"><img src="docs/badges/ai.svg" alt="Google Gemini Argon" height="30" /></a>&nbsp;
-  <a href="#-license--legal-compliance"><img src="docs/badges/license-en.svg" alt="License" height="30" /></a>
+  <a href="../../releases/latest"><img src="docs/badges/release-en.svg?v=2" alt="Download v2.4.0" height="30" /></a>&nbsp;
+  <a href="https://github.com/kralonur/hp-charge-limit-rs"><img src="docs/badges/engine-en.svg?v=2" alt="Core Engine" height="30" /></a>&nbsp;
+  <a href="#-key-features"><img src="docs/badges/ui-en.svg?v=2" alt="DirectX WPF UI" height="30" /></a>&nbsp;
+  <a href="#-ai-assisted-development--credits"><img src="docs/badges/ai.svg?v=2" alt="Google Gemini Argon" height="30" /></a>&nbsp;
+  <a href="#-license--legal-compliance"><img src="docs/badges/license-en.svg?v=2" alt="License" height="30" /></a>
 </p>
 
 [**📥 Download (Releases)**](../../releases/latest) &nbsp;·&nbsp; [**💡 Quick Start Guide**](#-does-it-require-installation-how-to-use) &nbsp;·&nbsp; [**❓ FAQ**](#-frequently-asked-questions-faq) &nbsp;·&nbsp; [**📦 Changelog**](docs/CHANGELOG.md) &nbsp;·&nbsp; [**🔗 Upstream Source**](#-upstream-source--attribution)
