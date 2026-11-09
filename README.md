@@ -1,18 +1,24 @@
 <div align="center">
 
-<img src="docs/logo.png" alt="HP Battery Charge Limiter Logo" width="110" height="110" />
+<a href="README.md"><img src="docs/badges/lang-tr-active.svg" alt="Türkçe (Aktif)" height="34" /></a>&nbsp;&nbsp;<a href="README.en.md"><img src="docs/badges/lang-en-inactive.svg" alt="Read in English" height="34" /></a>
 
-# ⚡ HP Battery Charge Limiter (v2.4 Native GPU Edition)
+<br /><br />
+
+<img src="docs/logo.png" alt="HP Battery Charge Limiter Logo" width="118" height="118" />
+
+# ⚡ HP Battery Charge Limiter
 
 **HP Victus, OMEN ve Pavilion** dizüstü bilgisayarlar için BIOS'ta bulunmayan batarya şarj sınırlandırma özelliğini donanımsal olarak etkinleştiren, **kurulum gerektirmeyen (`1.57 MB` tek `.exe`)**, **DirectX GPU hızlandırmalı** modern masaüstü kontrol merkezi.
 
-[![Download Latest Release](https://img.shields.io/badge/📥_İndir_(Releases)-v2.4.0--native-0284c7?style=for-the-badge)](../../releases/latest)
-[![Core Engine](https://img.shields.io/badge/Core_Engine-Rust_(hp--charge--limit--rs_v0.4.1)-ea580c?style=for-the-badge)](https://github.com/kralonur/hp-charge-limit-rs)
-[![UI Engine](https://img.shields.io/badge/UI-Native_DirectX_WPF_(1.57_MB)-10b981?style=for-the-badge)](#)
-[![Built With AI](https://img.shields.io/badge/Co--Developed_with-Google_Gemini_(Argon)-8b5cf6?style=for-the-badge)](#-yapay-zeka-katkısı--geliştirme-süreci-ai-assisted-development)
-[![License](https://img.shields.io/badge/License-MIT_%2F_Apache--2.0-f59e0b?style=for-the-badge)](#-lisans-ve-yasal-bildirimler-license--legal-compliance)
+<p align="center">
+  <a href="../../releases/latest"><img src="docs/badges/release-tr.svg" alt="İndir v2.4.0" height="30" /></a>&nbsp;
+  <a href="https://github.com/kralonur/hp-charge-limit-rs"><img src="docs/badges/engine-tr.svg" alt="Çekirdek Motor" height="30" /></a>&nbsp;
+  <a href="#-öne-çıkan-özellikler"><img src="docs/badges/ui-tr.svg" alt="DirectX WPF Arayüz" height="30" /></a>&nbsp;
+  <a href="#-yapay-zeka-katkısı--geliştirme-süreci"><img src="docs/badges/ai.svg" alt="Google Gemini Argon" height="30" /></a>&nbsp;
+  <a href="#-lisans-ve-yasal-bildirimler"><img src="docs/badges/license-tr.svg" alt="Lisans" height="30" /></a>
+</p>
 
-[📥 İndir (Releases)](../../releases/latest) · [🇹🇷 Türkçe Rehber](#-kurulum-gerekir-mi-nasıl-kullanılır) · [🇬🇧 English Guide](#-english-quick-start-guide) · [📦 Sürüm Geçmişi](docs/CHANGELOG.md) · [🔗 Ana Kaynak](#-ana-kaynak-upstream-source-ve-atıf)
+[**📥 İndir (Releases)**](../../releases/latest) &nbsp;·&nbsp; [**💡 Kurulum & Kullanım**](#-kurulum-gerekir-mi-nasıl-kullanılır) &nbsp;·&nbsp; [**❓ Sıkça Sorulan Sorular**](#-sıkça-sorulan-sorular-sss) &nbsp;·&nbsp; [**📦 Sürüm Geçmişi**](docs/CHANGELOG.md) &nbsp;·&nbsp; [**🔗 Ana Kaynak**](#-ana-kaynak-upstream-source-ve-atıf)
 
 </div>
 
@@ -63,7 +69,7 @@ Programı ve arka plan servisini bilgisayarınızdan tamamen kaldırmak istersen
 
 ---
 
-## ✨ Öne Çıkan Özellikler (`v2.4.0 Native`)
+## ✨ Öne Çıkan Özellikler
 
 * **🚀 DirectX GPU Hızlandırmalı Arayüz (`1.57 MB`):** Python/Electron gibi ağır paketler yerine Windows'un yerleşik **WPF (`PresentationFramework` / DirectX)** motoruyla yazılmıştır. **144Hz / 165Hz** ekranlarda sıfır gecikmeyle çalışır ve `< 80 ms` içinde açılır.
 * **☀️ / 🌙 Karanlık ve Aydınlık Tema (Dark / Light Mode):** Üst çubuktaki tema butonu ile Windows 11 pencere başlığı dahil tüm arayüz anında Karanlık veya Aydınlık moda geçer.
@@ -105,22 +111,7 @@ flowchart LR
 
 ---
 
-## 🇬🇧 English Quick Start Guide
-
-### Does It Require Installation?
-**No installer is required.** `HPChargeLimiter.exe` (available under [**Releases**](../../releases/latest)) is a **1.57 MB standalone portable executable** that embeds the core Rust service binary inside itself.
-
-### How to Use
-1. Download **`HPChargeLimiter.exe`** from the [**Releases**](../../releases/latest) page and run it.
-2. Switch the language to **`EN`** using the top-right toggle if desired.
-3. Choose a **Quick Preset** (**60% Desktop**, **80% Balanced**, or **90% Travel**) or customize the **Stop / Resume** sliders.
-4. Click **"💾 Save & Apply to Windows Service"** and approve the UAC prompt.
-5. **Done!** The app automatically installs and starts the background Windows Service (`C:\Program Files\hp-charge-limit-rs\hp-charge-limit-rs.exe`). Even if you close or delete `HPChargeLimiter.exe`, the background service continues enforcing your battery charge limit 24/7 across reboots.
-6. To completely remove the service and all files/logs/registry entries, open the **🖥️ System & Preferences** tab and click **"🧹 Full Uninstall & Clean All Leftovers"**.
-
----
-
-## 📂 Proje Dizin Yapısı (Repository Layout)
+## 📂 Proje Dizin Yapısı
 
 ```text
 ├── src/
@@ -138,9 +129,12 @@ flowchart LR
 │
 ├── docs/
 │   ├── logo.png                         # Uygulama logosu
+│   ├── badges/                          # Yuvarlatılmış modern SVG rozetler
 │   ├── CHANGELOG.md                     # Sürüm geçmişi
 │   └── README_UPSTREAM.md               # Orijinal hp-charge-limit-rs dokümantasyonu
 │
+├── README.md                            # 🇹🇷 Türkçe Dokümantasyon
+├── README.en.md                         # 🇬🇧 İngilizce Dokümantasyon (English Documentation)
 ├── LICENSE-MIT                          # MIT Lisansı tam metni
 ├── LICENSE-APACHE                       # Apache 2.0 Lisansı tam metni
 ├── NOTICE                               # Apache 2.0 Bölüm 4 uyumlu telif ve değişiklik bildirimi
@@ -160,7 +154,7 @@ Bu projenin donanım haberleşme çekirdeği ve Windows arka plan servisi (**dae
 
 ---
 
-## 🤖 Yapay Zeka Katkısı & Geliştirme Süreci (AI-Assisted Development)
+## 🤖 Yapay Zeka Katkısı & Geliştirme Süreci
 
 Bu projenin masaüstü grafik arayüzü (**Native C# / DirectX WPF GUI**), kullanıcı deneyimi (UX) tasarımı, Karanlık/Aydınlık tema motoru, çift dil (`TR`/`EN`) mimarisi, sıfır kalıntılı kaldırma sistemi (`FullSystemCleanup`) ve dokümantasyonu **Google Gemini (Argon) / Antigravity AI** ile birlikte (*AI-Assisted / Vibe-Coding* yaklaşımıyla) geliştirilmiştir:
 
@@ -169,7 +163,7 @@ Bu projenin masaüstü grafik arayüzü (**Native C# / DirectX WPF GUI**), kulla
 
 ---
 
-## 🛠️ Kaynak Koddan Derleme (Build from Source)
+## 🛠️ Kaynak Koddan Derleme
 
 Ekstra hiçbir harici SDK veya paket indirmeye gerek kalmadan Windows 10/11'in yerleşik `.NET Framework 64-bit` derleyicisiyle 2 saniye içinde derlenebilir:
 
@@ -179,7 +173,7 @@ powershell -ExecutionPolicy Bypass -File .\src\v2-native-wpf\build.ps1
 
 ---
 
-## 📜 Lisans ve Yasal Bildirimler (License & Legal Compliance)
+## 📜 Lisans ve Yasal Bildirimler
 
 Bu proje, ana kaynak olan [**`hp-charge-limit-rs`**](https://github.com/kralonur/hp-charge-limit-rs) ile uyumlu olarak **MIT Lisansı** veya **Apache Lisansı (Sürüm 2.0)** altında çift lisanslıdır (**`MIT OR Apache-2.0`**):
 

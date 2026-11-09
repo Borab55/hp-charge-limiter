@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="278" height="30" viewBox="0 0 278 30">
+  <defs>
+    <clipPath id="pill">
+      <rect width="278" height="30" rx="15" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#pill)">
+    <rect width="110" height="30" fill="#1E293B" />
+    <rect x="110" width="168" height="30" fill="#EA580C" />
+  </g>
+  <rect x="0.5" y="0.5" width="277" height="29" rx="14.5" fill="none" stroke="#334155" stroke-opacity="0.6" />
+  <g font-family="Segoe UI, Inter, -apple-system, sans-serif" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="55.0" y="19.2" fill="#E2E8F0">🦀 Core Engine</text>
+    <text x="194.0" y="19.2" fill="#FFFFFF" font-weight="700">hp-charge-limit-rs v0.4.1</text>
+  </g>
+</svg>
