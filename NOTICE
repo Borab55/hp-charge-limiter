@@ -1,0 +1,26 @@
+hp-charge-limit-rs & HP Battery Charge Limiter GUI
+================================================================================
+
+1. UPSTREAM CORE ENGINE (hp-charge-limit-rs)
+--------------------------------------------------------------------------------
+Copyright (c) hp-charge-limit-rs contributors (Onur Kral / @kralonur)
+Upstream Repository : https://github.com/kralonur/hp-charge-limit-rs
+Upstream Version    : v0.4.1 (Commit: 3cdff25dd11b05797b8f56a393a58fcc3e8d3a2c)
+License             : Dual-licensed under MIT OR Apache-2.0
+                      (See LICENSE-MIT and LICENSE-APACHE in the root directory)
+
+2. DERIVATIVE WORK & MODIFICATIONS NOTICE (Apache License 2.0, Section 4)
+--------------------------------------------------------------------------------
+This repository contains the unmodified upstream source code and binary of
+`hp-charge-limit-rs` v0.4.1 (located in `hp-charge-limit-rs-source/` and embedded
+within the standalone GUI executables), together with original graphical user
+interface (GUI) wrappers and management tools developed on top of it:
+
+- `hp-charge-limiter-gui/` (v1.0.0): Python / CustomTkinter Desktop GUI wrapper.
+- `src/v2-native-wpf/`     (v2.0.0): Native Windows C# / WPF DirectX GPU-accelerated
+                                     single-binary GUI with embedded Rust engine,
+                                     instant Win32 volatile registry bypass, TR/EN
+                                     localization, and full residue uninstaller.
+
+No modifications were made to the core Rust ACPI/WMI hardware logic in
+`hp-charge-limit-rs-source/`.

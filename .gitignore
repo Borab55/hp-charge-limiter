@@ -1,0 +1,13 @@
+# Build outputs & release binaries (distributed via GitHub Releases)
+/HPChargeLimiter.exe
+/releases/
+/hp-charge-limit-rs-source/target/
+
+# IDE & OS files
+.vs/
+.vscode/
+*.user
+*.suo
+*.pdb
+Thumbs.db
+.DS_Store
