@@ -1,4 +1,4 @@
-pub fn tr(lang: &str, key: &str) -> &'static str {
+pub fn tr<'a>(lang: &str, key: &'a str) -> &'a str {
     let is_en = lang.eq_ignore_ascii_case("en");
     match (is_en, key) {
         (false, "app_title") => "HP Battery Charge Limiter",

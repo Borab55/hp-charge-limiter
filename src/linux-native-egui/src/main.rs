@@ -85,22 +85,22 @@ impl ChargeLimiterApp {
             visuals.faint_bg_color = Color32::from_rgb(24, 34, 52);
             visuals.extreme_bg_color = Color32::from_rgb(9, 13, 22);
             visuals.widgets.noninteractive.bg_fill = Color32::from_rgb(24, 34, 52);
-            visuals.widgets.noninteractive.fg_stroke = Stroke::new(1.0, Color32::from_rgb(248, 250, 252));
+            visuals.widgets.noninteractive.fg_stroke = Stroke::new(1.0_f32, Color32::from_rgb(248, 250, 252));
             visuals.widgets.inactive.bg_fill = Color32::from_rgb(30, 41, 59);
-            visuals.widgets.inactive.fg_stroke = Stroke::new(1.0, Color32::from_rgb(226, 232, 240));
+            visuals.widgets.inactive.fg_stroke = Stroke::new(1.0_f32, Color32::from_rgb(226, 232, 240));
         } else {
             visuals.panel_fill = Color32::from_rgb(248, 250, 252);
             visuals.window_fill = Color32::from_rgb(255, 255, 255);
             visuals.faint_bg_color = Color32::from_rgb(226, 232, 240);
             visuals.extreme_bg_color = Color32::from_rgb(241, 245, 249);
             visuals.widgets.noninteractive.bg_fill = Color32::from_rgb(226, 232, 240);
-            visuals.widgets.noninteractive.fg_stroke = Stroke::new(1.0, Color32::from_rgb(15, 23, 42));
+            visuals.widgets.noninteractive.fg_stroke = Stroke::new(1.0_f32, Color32::from_rgb(15, 23, 42));
             visuals.widgets.inactive.bg_fill = Color32::from_rgb(203, 213, 225);
-            visuals.widgets.inactive.fg_stroke = Stroke::new(1.0, Color32::from_rgb(15, 23, 42));
+            visuals.widgets.inactive.fg_stroke = Stroke::new(1.0_f32, Color32::from_rgb(15, 23, 42));
         }
 
         visuals.selection.bg_fill = Color32::from_rgb(2, 132, 199);
-        visuals.selection.stroke = Stroke::new(1.0, Color32::WHITE);
+        visuals.selection.stroke = Stroke::new(1.0_f32, Color32::WHITE);
         ctx.set_visuals(visuals);
     }
 
@@ -172,7 +172,7 @@ impl ChargeLimiterApp {
         };
         egui::Frame::none()
             .fill(fill)
-            .stroke(Stroke::new(1.0, stroke_col))
+            .stroke(Stroke::new(1.0_f32, stroke_col))
             .rounding(Rounding::same(10.0))
             .inner_margin(Margin::same(14.0))
     }
@@ -340,7 +340,7 @@ impl eframe::App for ChargeLimiterApp {
             if !self.battery.acpi_call_present {
                 egui::Frame::none()
                     .fill(Color32::from_rgb(120, 53, 15))
-                    .stroke(Stroke::new(1.0, Color32::from_rgb(245, 158, 11)))
+                    .stroke(Stroke::new(1.0_f32, Color32::from_rgb(245, 158, 11)))
                     .rounding(Rounding::same(8.0))
                     .inner_margin(Margin::same(10.0))
                     .show(ui, |ui| {
