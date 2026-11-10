@@ -1,0 +1,172 @@
+name: Build & Auto-Release (Windows DirectX + Linux OpenGL GPU Distros)
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Release tag to publish (default: v2.5.0)'
+        required: false
+        default: 'v2.5.0'
+
+permissions:
+  contents: write
+
+jobs:
+  build-linux:
+    name: Linux x86_64 (Portable + .deb + .tar.gz)
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Linux GUI & Mesa/OpenGL/Wayland/X11 dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            pkg-config \
+            libdbus-1-dev \
+            libxcb-render0-dev \
+            libxcb-shape0-dev \
+            libxcb-xfixes0-dev \
+            libxkbcommon-dev \
+            libxkbcommon-x11-dev \
+            libwayland-dev \
+            libgl1-mesa-dev \
+            libegl1-mesa-dev \
+            libssl-dev \
+            libgtk-3-dev
+
+      - name: Install Rust stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build Core Engine (hp-charge-limit-rs v0.4.1)
+        working-directory: hp-charge-limit-rs-source
+        run: cargo build --release --locked
+
+      - name: Embed Core Engine & Build Native Linux GPU GUI (eframe/egui)
+        run: |
+          mkdir -p src/linux-native-egui/core
+          cp hp-charge-limit-rs-source/target/release/hp-charge-limit-rs src/linux-native-egui/core/hp-charge-limit-rs
+          cd src/linux-native-egui
+          cargo build --release
+          cp target/release/hp-charge-limiter ../../HPChargeLimiter-Linux-x86_64
+          chmod 755 ../../HPChargeLimiter-Linux-x86_64
+
+      - name: Package Universal .tar.gz & Debian/Ubuntu/Mint .deb
+        run: |
+          # 1. Create Universal .tar.gz for Arch / Fedora / openSUSE / Generic Linux
+          mkdir -p pkg-tar/hp-charge-limiter
+          cp HPChargeLimiter-Linux-x86_64 pkg-tar/hp-charge-limiter/
+          cp docs/logo.png pkg-tar/hp-charge-limiter/hp-charge-limiter.png
+          cp README.md README.en.md LICENSE-MIT LICENSE-APACHE pkg-tar/hp-charge-limiter/
+          tar -czf HPChargeLimiter-Linux-x86_64.tar.gz -C pkg-tar hp-charge-limiter
+
+          # 2. Build Debian/Ubuntu/Mint/Pop!_OS .deb package
+          DEB_DIR="pkg-deb/hp-charge-limiter_2.5.0_amd64"
+          mkdir -p "$DEB_DIR/DEBIAN"
+          mkdir -p "$DEB_DIR/usr/bin"
+          mkdir -p "$DEB_DIR/usr/share/applications"
+          mkdir -p "$DEB_DIR/usr/share/pixmaps"
+
+          cp HPChargeLimiter-Linux-x86_64 "$DEB_DIR/usr/bin/hp-charge-limiter"
+          chmod 755 "$DEB_DIR/usr/bin/hp-charge-limiter"
+          cp docs/logo.png "$DEB_DIR/usr/share/pixmaps/hp-charge-limiter.png"
+
+          cat << 'EOF' > "$DEB_DIR/usr/share/applications/hp-charge-limiter.desktop"
+          [Desktop Entry]
+          Type=Application
+          Name=HP Battery Charge Limiter
+          Comment=Hardware Battery Charge Limiter for HP Victus, OMEN & Pavilion
+          Exec=/usr/bin/hp-charge-limiter
+          Icon=hp-charge-limiter
+          Terminal=false
+          Categories=System;Settings;HardwareSettings;
+          EOF
+
+          cat << 'EOF' > "$DEB_DIR/DEBIAN/control"
+          Package: hp-charge-limiter
+          Version: 2.5.0
+          Section: utils
+          Priority: optional
+          Architecture: amd64
+          Maintainer: Borab55 <https://github.com/Borab55/hp-charge-limiter>
+          Depends: libc6, libgl1, libx11-6, libwayland-client0, libxkbcommon0, policykit-1
+          Recommends: acpi-call-dkms
+          Description: Native GPU-Accelerated HP Battery Charge Limiter for Victus, OMEN & Pavilion
+           Hardware-level battery charge threshold manager (60%/80%/90%) powered by
+           hp-charge-limit-rs and a native Rust OpenGL/egui desktop control center.
+          EOF
+
+          dpkg-deb --build "$DEB_DIR" hp-charge-limiter_2.5.0_amd64.deb
+
+      - name: Upload Linux Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux-Packages
+          path: |
+            HPChargeLimiter-Linux-x86_64
+            hp-charge-limiter_2.5.0_amd64.deb
+            HPChargeLimiter-Linux-x86_64.tar.gz
+
+  build-windows:
+    name: Windows x86_64 (Native DirectX / WPF GPU)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile Windows Native DirectX/WPF Binary
+        shell: pwsh
+        run: |
+          powershell -ExecutionPolicy Bypass -File .\src\v2-native-wpf\build.ps1
+
+      - name: Upload Windows Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows-Package
+          path: HPChargeLimiter.exe
+
+  publish-release:
+    name: Publish GitHub Release (Windows + Linux Distros)
+    needs: [build-linux, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+
+      - name: Prepare Release Binaries
+        run: |
+          chmod +x dist/Linux-Packages/HPChargeLimiter-Linux-x86_64
+          ls -lh dist/*/*
+
+      - name: Determine Release Tag
+        id: tag
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            echo "tag_name=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          elif [[ -n "${{ github.event.inputs.release_tag }}" ]]; then
+            echo "tag_name=${{ github.event.inputs.release_tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag_name=v2.5.0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag_name }}
+          name: "${{ steps.tag.outputs.tag_name }} — Native GPU Edition (Windows DirectX & Linux OpenGL)"
+          generate_release_notes: true
+          files: |
+            dist/Windows-Package/HPChargeLimiter.exe
+            dist/Linux-Packages/HPChargeLimiter-Linux-x86_64
+            dist/Linux-Packages/hp-charge-limiter_2.5.0_amd64.deb
+            dist/Linux-Packages/HPChargeLimiter-Linux-x86_64.tar.gz

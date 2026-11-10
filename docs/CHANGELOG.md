@@ -4,6 +4,15 @@ Bu projedeki tüm önemli değişiklikler [Semantic Versioning (SemVer)](https:/
 
 ---
 
+## [v2.5.0] — 2026-11-10 *(Native Linux OpenGL/egui GPU Edition, 1-Click `acpi_call` Setup & CI/CD)*
+
+### 🐧 Linux Native GPU Desteği ve Otomatik Ön Koşul Sihirbazı
+- **🚀 %100 Saf Rust + OpenGL (`eframe` / `egui`) Linux Masaüstü Arayüzü (`src/linux-native-egui/`):** Linux kullanıcıları için tıpkı Windows'taki DirectX WPF sürümü gibi ekran kartı (GPU) hızlandırmalı, Wayland ve X11 uyumlu, 144Hz/165Hz akıcılığında çalışan tek dosyalı (`HPChargeLimiter-Linux-x86_64`) yerel arayüz geliştirildi.
+- **🔧 Tek Tıkla `acpi_call` Çekirdek Modülü Otomatik Kurucu:** Sistemde `/proc/acpi/call` eksikse arayüzün en üstünde otomatik uyarı başlığı belirir. **"🔧 `acpi_call` Modülünü Otomatik Kur & Etkinleştir"** butonuna basıldığında kullanıcının dağıtımı (`Ubuntu/Debian/Mint/Pop!_OS`, `Arch/Manjaro/EndeavourOS`, `Fedora`, `openSUSE`) otomatik algılanır, `pkexec` ile gerekli DKMS paketi kurulur, `modprobe acpi_call` yüklenir ve `/etc/modules-load.d/hp-charge-limit-rs.conf` kalıcı hale getirilir.
+- **🤖 GitHub Actions Otomatik Çapraz Platform Release Hattı (`.github/workflows/release.yml`):** Yeni bir `v*` etiketi (Release) oluşturulduğunda veya Actions sekmesinden tetiklendiğinde hem **Windows (`HPChargeLimiter.exe`)** hem de **Linux (`HPChargeLimiter-Linux-x86_64`)** sürümlerini bulutta derleyip otomatik olarak GitHub Releases sayfasına yükleyen CI/CD iş akışı eklendi.
+
+---
+
 ## [v2.4.0] — 2026-11-10 *(Modern Fluent Squircle Icon, Crisp System Tray & GitHub Documentation)*
 
 ### 🎨 Yeni Simge ve GitHub Yayını Hazırlığı

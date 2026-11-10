@@ -1,0 +1,27 @@
+[package]
+name = "hp-charge-limiter-gui"
+version = "2.5.0"
+edition = "2021"
+description = "Native OpenGL GPU-Accelerated Desktop Control Center for HP Battery Charge Limiter on Linux"
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "hp-charge-limiter"
+path = "src/main.rs"
+
+[dependencies]
+eframe = { version = "0.29", default-features = false, features = [
+    "default_fonts",
+    "glow",
+    "wayland",
+    "x11",
+] }
+egui = "0.29"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
